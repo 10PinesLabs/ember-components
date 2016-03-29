@@ -6,6 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('prueba', function() {
+    this.route('combo');
+  });
 });
 
 export default Router;

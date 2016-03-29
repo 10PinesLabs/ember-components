@@ -1,0 +1,19 @@
+<h2>Combo</h2>
+
+{{select-2
+  content=cartas
+  value=cartasSeleccionadas
+  multiple=true
+  placeholder="Choose some Pizzas"
+}}
+
+<div>Seleccionados:
+  {{cartasSeleccionadas}}
+
+
+  {{sf-table table=cartasSeleccionadas
+      editable=true edit=(action "editarTabla") cancel=(action "cancelarEditar") }}
+
+</div>
+
+{{outlet}}
