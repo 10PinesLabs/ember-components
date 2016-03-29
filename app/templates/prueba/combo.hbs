@@ -1,18 +1,31 @@
 <h2>Combo</h2>
 
-{{select-2
-  content=cartas
-  value=cartasSeleccionadas
-  multiple=true
-  placeholder="Choose some Pizzas"
-}}
+<div>
+  {{select-2
+    content=cartas
+    value=cartasSeleccionadas
+    multiple=true
+    placeholder="Eleji algunas cartitas"
 
-<div>Seleccionados:
-  {{cartasSeleccionadas}}
+    optionLabelPath="Nombre"
+    optionDescriptionPath="Oracle_text"
+  }}
+</div>
 
+<div>
+  <p>
+    Seleccionados:
+    <ul>
+      {{#each cartasSeleccionadas as |carta|}}
+        <li>{{carta.Nombre}}</li>
+      {{/each}}
+    </ul>
+  </p>
 
-  {{sf-table table=cartasSeleccionadas
-      editable=true edit=(action "editarTabla") cancel=(action "cancelarEditar") }}
+  <div>
+    {{sf-table table=cartasSeleccionadasParaTabla
+    editable=true edit=(action "editarTabla") cancel=(action "cancelarEditar") }}
+  </div>
 
 </div>
 
