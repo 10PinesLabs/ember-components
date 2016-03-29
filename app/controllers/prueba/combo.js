@@ -39,6 +39,29 @@ export default Ember.Controller.extend({
     },
     cancelarEditar(hash){
       console.log("Cancelar", hash);
+    },
+
+    buscarCartas(query, deferred){
+      console.log(query);
+
+      debugger;
+
+      var cartas = [];
+
+      $.ajax({
+        url: "https://api.deckbrew.com/mtg/cards?name=",
+      }).then(function(respuesta) {
+        respuesta.forEach(function(carta){
+          var model = {
+            id: carta.id,
+            Nombre: carta.name,
+            Oracle_text: carta.text,
+            Imagen: "<img src='" + carta.editions[0].image_url + "' />"
+          };
+          cartas.addObject(model);
+        });
+        deferred.resolve(cartas);
+      }, deferred.reject);
     }
 
   }
