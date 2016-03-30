@@ -10,8 +10,9 @@ Router.map(function() {
     this.route('combo');
     this.route('date-picker');
   });
-  this.route('ember-guru-modals');
   this.route('liquid-tether-modals');
+  this.route('ember-guru-modals');
+  this.route('ember-remodals');
 });
 
 export default Router;

@@ -1,0 +1,77 @@
+<h2>Ember Remodals</h2>
+<a href=http://sethbrasile.github.io/ember-remodal/#/components">Ember Remodal site</a>
+<br />
+
+<br />
+{{#ember-remodal openButton='Modal Block'}}
+    <p>Anything placed inside a modal's block will be rendered inside the modal.</p>
+    <img src="http://loremflickr.com/320/240" alt="random image" />
+{{/ember-remodal}}
+<br />
+
+<br />
+{{ember-remodal
+  openButton='With Bootstrap'
+  confirmButton='OK'
+  title='A Title!'
+  text='lorem ipsum dolar sit amet'
+  buttonClasses='btn'
+  openButtonClasses='btn-primary'
+  confirmButtonClasses='btn-success'
+  onOpen='notifyOpened'
+  onConfirm='notifyConfirmed'
+  onCancel='notifyCanceled'
+  onClose='notifyClosed'
+}}
+<br />
+
+<br />
+{{ember-remodal
+  openButton='With Actions'
+  confirmButton='OK'
+  cancelButton='Cancel'
+  onOpen='notifyOpened'
+  onConfirm='notifyConfirmed'
+  onCancel='notifyCanceled'
+  onClose='notifyClosed'
+}}
+<br />
+
+<br />
+{{#ember-remodal title='Words and an Image' as |m|}}
+  {{#m.open}}
+      <p>Modal que se abre clickeando cualquier cosa (en este caso texto)</p>
+  {{/m.open}}
+
+  <div class="content">
+      <p>Se puede cerrar clickeando la imagen o el boton.</p>
+      <p>Cualquier botón puede reemplazarse facilmente por cualquier elemento html</p>
+  </div>
+
+  <div class="actions">
+    {{#m.cancel}}
+        <img src="http://loremflickr.com/320/240" alt="random image" />
+    {{/m.cancel}}
+
+    {{#m.confirm}}
+        <button class="btn btn-success">Confirm!</button>
+    {{/m.confirm}}
+  </div>
+{{/ember-remodal}}
+<br />
+
+{{ember-remodal
+  forService=true
+  confirmButton='OK'
+  title='A Title!'
+  text='lorem ipsum dolar sit amet'
+  buttonClasses='btn'
+  openButtonClasses='btn-primary'
+  confirmButtonClasses='btn-success'
+}}
+
+<button {{action 'openModal'}}>Puede abrirse programáticamente!</button>
+<br />
+
+<br />
+<a href="http://sethbrasile.github.io/ember-remodal/#/options">Y mucho pero mucho más...</a>
