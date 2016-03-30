@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
 
       self.get('oracle').encontrarPorNombre(query.term).then(function(cartas){
           self.set('cartas', cartas);
-          deferred.resolve(cartas)
+          deferred.resolve(cartas);
         }, deferred.reject
       );
     }

@@ -1,0 +1,14 @@
+<h2>Combo</h2>
+
+<label>
+  seleccionar un día:
+  {{pikaday-input
+    value=fechaElejida placeholder="Especialmente para Dario"
+    format="DD/MM/YYYY" theme="dark-theme"
+    maxDate=diaMaximo }}
+</label>
+<p>
+  Esto fue {{moment-from-now fechaElejida}}
+</p>
+
+{{outlet}}
