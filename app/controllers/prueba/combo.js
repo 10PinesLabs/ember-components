@@ -1,24 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  cartas: [
-    {
-      id: "1",
-      Nombre: "Nekusar, the Mindrazer",
-      Oracle_text: "At the beginning of each player's draw step, that player draws an additional card.",
-      Imagen: "<img src='http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=376426&type=card' />"
-    }, {
-      id: "2",
-      Nombre: "Sylvan Yeti",
-      Oracle_text: "Sylvan Yeti's power is equal to the number of cards in your hand.",
-      Imagen: "<img src='http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=20217&type=card' />"
-    }, {
-      id: "3",
-      Nombre: "Meteorite",
-      Oracle_text: "When Meteorite enters the battlefield, it deals 2 damage to target creature or player.",
-      Imagen: "<img src='http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=383308&type=card' />"
-    }
-  ],
+  oracle: Ember.inject.service(),
+
+  cartas: [],
   cartasSeleccionadas: [],
   cartasSeleccionadasParaTabla: Ember.computed('cartasSeleccionadas', function() {
     return { rows: this.cartasSeleccionadas };
@@ -30,9 +15,8 @@ export default Ember.Controller.extend({
 
   actions: {
     editarTabla(hash){
-      console.log("Editar", hash);
+      console.log("Editar", hash, this.cartas);
 
-      debugger;
       var carta = this.buscar(hash.row, this.cartas);
       Ember.set(carta, hash.key, hash.value);
 
@@ -42,27 +26,13 @@ export default Ember.Controller.extend({
     },
 
     buscarCartas(query, deferred){
-      console.log(query);
+      var self = this;
 
-      debugger;
-
-      var cartas = [];
-
-      $.ajax({
-        url: "https://api.deckbrew.com/mtg/cards?name=",
-      }).then(function(respuesta) {
-        respuesta.forEach(function(carta){
-          var model = {
-            id: carta.id,
-            Nombre: carta.name,
-            Oracle_text: carta.text,
-            Imagen: "<img src='" + carta.editions[0].image_url + "' />"
-          };
-          cartas.addObject(model);
-        });
-        deferred.resolve(cartas);
-      }, deferred.reject);
+      self.get('oracle').encontrarPorNombre(query.term).then(function(cartas){
+          self.set('cartas', cartas);
+          deferred.resolve(cartas)
+        }, deferred.reject
+      );
     }
-
   }
 });
