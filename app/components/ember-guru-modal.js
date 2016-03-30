@@ -4,7 +4,6 @@ export default Ember.Component.extend({
   actions: {
     ok: function() {
       this.$('.modal').modal('hide');
-      debugger;
       this.sendAction(this.get('onOk'));
     }
   },
