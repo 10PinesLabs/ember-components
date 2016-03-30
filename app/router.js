@@ -6,6 +6,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('liquid-tether-modals');
+  this.route('ember-guru-modals');
 });
 
 export default Router;

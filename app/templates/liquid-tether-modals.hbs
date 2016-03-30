@@ -1,0 +1,121 @@
+<h1>LiquidTether Test</h1>
+<p>Toolkit for both positioning & animating UI elements: Modals, popovers, dropdowns, tooltips</p>
+<br />
+<a href="http://pzuraq.github.io/liquid-tether/">Documentacion</a>
+<br />
+
+<h2>Button with animated tooltip</h2>
+
+<button {{action 'toggleHello'}} id="hello-world" class="btn btn-primary btn-embossed">
+    Hello, World!
+</button>
+
+{{#if showHello}}
+  {{#liquid-tether to="hello-world" target="#hello-world" attachment="middle left" targetAttachment="middle right" }}
+      <div id="hello-world-popover" class="popover right">
+          <div class="arrow"></div>
+          <div class="popover-title">Hello!</div>
+      </div>
+  {{/liquid-tether}}
+{{/if}}
+
+<h2>Open Modal</h2>
+
+<div class="example-button-container">
+    <button {{action "openModalDialog"}}>
+        Open Dialog
+    </button>
+</div>
+
+{{#if showFirstModalDialog}}
+  {{#liquid-tether
+  to="modal-dialog"
+  target="document.body"
+  targetModifier="visible"
+  attachment="middle center"
+  tetherClass="modal-dialog"
+  overlayClass="modal-backdrop"}}
+
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Modal Header</h4>
+          </div>
+
+          <div class="modal-body">
+              <p>Here's a modal!</p>
+          </div>
+
+          <div class="modal-footer">
+              <button {{action "closeModalDialog"}}>Cancel</button>
+              <button {{action "nextModalDialog"}}>Next</button>
+          </div>
+      </div>
+
+  {{/liquid-tether}}
+{{/if}}
+
+{{#if showSecondModalDialog}}
+  {{#liquid-tether
+  to="modal-dialog"
+  target="document.body"
+  targetModifier="visible"
+  attachment="middle center"
+  tetherClass="modal-dialog"
+  overlayClass="modal-backdrop"}}
+
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Another Modal</h4>
+          </div>
+
+          <div class="modal-body">
+              <p>
+                  This modal came in from the right instead of fading. The next modal
+                  will also slide in from the right, while the previous modal will slide
+                  in from the left, maintaing spacial context.
+              </p>
+          </div>
+
+          <div class="modal-footer">
+              <button {{action "prevModalDialog"}}>Back</button>
+              <button {{action "nextModalDialog"}}>Next</button>
+          </div>
+      </div>
+
+  {{/liquid-tether}}
+{{/if}}
+
+{{#if showThirdModalDialog}}
+  {{#liquid-tether
+  to="modal-dialog"
+  target="document.body"
+  targetModifier="visible"
+  attachment="middle center"
+  tetherClass="modal-dialog"
+  overlayClass="modal-backdrop"}}
+
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Another Modal</h4>
+          </div>
+
+          <div class="modal-body">
+              <p>
+                  This is the last modal! It'll fade out when you finish the dialog.
+              </p>
+          </div>
+
+          <div class="modal-footer">
+              <button {{action "prevModalDialog"}}>Back</button>
+              <button {{action "closeModalDialog"}}>Finish</button>
+          </div>
+      </div>
+
+  {{/liquid-tether}}
+{{/if}}
+
+<h2>DropDown</h2>
+
+
+
+
