@@ -1,0 +1,34 @@
+<h2>Combo</h2>
+
+<div>
+  {{select-2
+    value=cartasSeleccionadas
+    multiple=true
+    placeholder="Eleji algunas cartitas"
+
+    minimumInputLength=3
+    query="buscarCartas"
+
+    optionLabelPath="Nombre"
+    optionDescriptionPath="Oracle_text"
+  }}
+</div>
+
+<div>
+  <p>
+    Seleccionados:
+    <ul>
+      {{#each cartasSeleccionadas as |carta|}}
+        <li>{{carta.Nombre}}</li>
+      {{/each}}
+    </ul>
+  </p>
+
+  <div>
+    {{sf-table table=cartasSeleccionadasParaTabla
+    editable=true edit=(action "editarTabla") cancel=(action "cancelarEditar") }}
+  </div>
+
+</div>
+
+{{outlet}}

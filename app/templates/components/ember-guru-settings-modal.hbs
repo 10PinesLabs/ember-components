@@ -1,4 +1,4 @@
-{{#ember-guru-modal title='Settings' ok='save' close='removeModal'}}
+{{#ember-guru-modal title='Settings' onOk='guardar' onClose='cerrar'}}
     <form {{action 'ok' on='submit' target=view}}>
         <div class="form-group">
             <label>Name</label>

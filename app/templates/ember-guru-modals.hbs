@@ -1,11 +1,15 @@
-<h1>EmberGuru Test</h1>
-<p></p>
+<h2>EmberGuru Test</h2>
+<a href=http://ember.guru/2014/master-your-modals-in-ember-js">Ember Guru site</a>
 <br />
-<a href=http://ember.guru/2014/master-your-modals-in-ember-js">Ember Gurú</a>
+<p>Descartado</p>
 <br />
 
-<h2>Settings & Logout Modals</h2>
+
+
+<h3>Settings and Logout Modals</h3>
 
 <p><strong>Name:</strong> {{name}}</p>
-<button {{action 'showModal' 'ember-guru-settings-modal' model}}>settings</button>
-<button {{action 'showModal' 'ember-guru-logout-modal'}}>logout</button>
+<button {{action 'showModal' 'components/ember-guru-settings-modal' model}}>settings</button>
+<button {{action 'showModal' 'components/ember-guru-logout-modal'}}>logout</button>
+
+{{outlet 'modal'}}
