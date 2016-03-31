@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('liquid-tether-modals');
   this.route('ember-guru-modals');
   this.route('ember-remodals');
+  this.route('ember-uploader-example');
 });
 
 export default Router;
